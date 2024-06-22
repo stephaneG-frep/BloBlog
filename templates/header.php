@@ -1,3 +1,12 @@
+<?php
+   $mainMenu = [
+      ["page" => "index.php", "title" => "Accueil", "meta_description" =>"Bloblog votre actu a vous !"],
+      ["page" => "actualites.php", "title" => "Les Actus", "meta_description" =>"Toutes les actus!"],
+      ["page" => "a_propos.php", "title" => "A propos", "meta_description" =>" L'histoire de Bloblog!"],
+   ];
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -24,11 +33,10 @@
             </div>
 
             <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="index.php" class="nav-link px-2 link-secondary">Home</a></li>
-                <li><a href="#" class="nav-link px-2">Features</a></li>
-                <li><a href="#" class="nav-link px-2">Pricing</a></li>
-                <li><a href="#" class="nav-link px-2">FAQs</a></li>
-                <li><a href="a_propos.php" class="nav-link px-2">About</a></li>
+                <?php foreach($mainMenu as $menuItem)  {?>
+                <li><a href="<?=$menuItem['page'] ?>" class="nav-link px-2"><?=$menuItem['title'] ?></a></li>
+                <?php  }?>
+               
             </ul>
 
             <div class="col-md-3 text-end">
@@ -37,3 +45,4 @@
             </div>
         </header>
     </div>
+    <main>
