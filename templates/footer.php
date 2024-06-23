@@ -9,7 +9,7 @@
             <li class="nav-item"><a href="a_propos.php" class="nav-link px-2 text-body-secondary">About</a></li>
         </ul>
         <p class="text-center text-body-secondary">© 2024 Company, Inc--<img src="assets/images/nabu.jpg"
-                alt="logo-compagnie" width="160px" height="160px" /></p>
+                alt="logo-compagnie" width="130px" height="130px" class="m-4 rounded" /></p>
 
     </footer>
 </div>
