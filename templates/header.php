@@ -1,10 +1,6 @@
 <?php
-   $mainMenu = [
-      'index.php' => ["menu-title" => "Accueil", "head_title" => "Accueil_bloblog_site _d'actus..", "meta_description" =>"Bloblog votre actu a vous !"],
-      'actualites.php' => ["menu-title" => "Les Actus", "head_title" => "Toutes les actualitées de_bloblog_site _d'actus..", "meta_description" =>"Toutes les"],
-      'a_propos.php' =>["menu-title" => "A propos", "head_title" => "L'histoire de_bloblog_site _d'actus..", "meta_description" =>" L'histoire de Bloblog!"],
-   ];
-
+   require_once __DIR__. "/../lib/article.php";
+   require_once __DIR__. "/../lib/menu.php";
     $currentPage = basename($_SERVER["SCRIPT_NAME"]);
 
 ?>
@@ -16,8 +12,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="<?=@$mainMenu[$currentPage]['meta_description']?>">
-    <title><?=@$mainMenu[$currentPage]['head_title']?></title>
+    <meta name="description" content="<?=$mainMenu[$currentPage]['meta_description']?>">
+    <title><?=$mainMenu[$currentPage]['head_title']?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/override-bootstrap.css">
@@ -37,12 +33,15 @@
             </div>
 
             <ul class="nav nav-pills col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                <?php foreach($mainMenu as $key=>$menuItem)  {?>
+                <?php foreach($mainMenu as $key=>$menuItem)  {
+                    if (!$menuItem['exclude']) {
+                    ?>
                 <li class="nav-item"><a href="<?=$key?>" class="nav-link px-2 <?php
                      if ($key === $currentPage) { echo"active"; }
                      //echo($key === $currentPage) ? "active : "";
                      ?>"><?=$menuItem['menu-title'] ?></a></li>
-                <?php  }?>
+                <?php }
+                }?>
 
             </ul>
 

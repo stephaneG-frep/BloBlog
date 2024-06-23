@@ -1,6 +1,8 @@
 <?php 
+require_once __DIR__. "/lib/article.php";
+require_once __DIR__. "/lib/menu.php";
 require_once __DIR__. "/templates/header.php";
-require_once __DIR__. "/lib/articles.php";
+
 
 ?>
 <div class="container col-xxl-8 px-4 py-5">
