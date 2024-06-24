@@ -19,7 +19,7 @@ $result = $query->fetch(PDO::FETCH_ASSOC);
 $pdo = new PDO('mysql:dbname=bloblog;host=localhost;charset=utf8mb64', 'root', 'root');
 $id = (int)$_GET ['id'];
 $query = $pdo->prepare("SELECT * FROM users WHERE id = $id");
-$query->binValue('id', $id, PDO::PARAM_INT) */
+$query->binValue('id', $id, PDO::PARAM_INT);
 $query->execute();
 $result = $query->fetch(PDO::FETCH_ASSOC);
 
