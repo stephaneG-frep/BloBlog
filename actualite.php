@@ -2,28 +2,46 @@
 
 require_once __DIR__. "/lib/config.php";
 require_once __DIR__. "/lib/pdo.php";
-
-/* SANS BDD
 require_once __DIR__. "/lib/article.php";
-$id = $_GET['id'];
-$article = $articles[$id];
-
 require_once __DIR__. "/lib/menu.php";
-$mainMenu["actualite.php"] = ["head_title" => htmlentities($article["title"]), "meta_description" =>htmlentities(substr($article["content"], 0, 250)), "exclude" => true];
-*/
+
+$mainMenu["actualite.php"] = ["head_title" => "Article introuvable", "meta_description" => "Article introuvable", "exclude" => true];
+
+$error = false;
+
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $article = getArticleById($pdo, $id);
+
+    if ($article){
+        if ($article["image"] === null) {
+            $imagePath = _ASSETS_IMAGES_FOLDER_."default-article.jpg";
+         } else {
+           $imagePath = _ARTICLES_IMAGES_FOLDER_.htmlentities($article['image']);
+         }
+
+        $mainMenu["actualite.php"] = ["head_title" => htmlentities($article["title"]), "meta_description" =>htmlentities(substr($article["content"], 0, 250)), "exclude" => true];
+    } else {
+        $error = true;
+    }
+
+} else {
+    $error = true;
+}
 
 require_once __DIR__. "/templates/header.php";
 
-
-
-
-
 ?>
+
+
+
 <div class="container col-xxl-8 px-4 py-5">
+
+    <?php if (!$error) { ?>
     <h1>Votre article...</h1>
     <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
         <div class="col-10 col-sm-8 col-lg-6">
-            <img src="uploads/articles/<?=htmlentities($article['image'])?>" class="d-block mx-lg-auto img-fluid"
+            <img src="<?=$imagePath?>" class="d-block mx-lg-auto img-fluid"
                 alt="<?=htmlentities($article["title"])?>" width="700" height="500" loading="lazy">
         </div>
         <div class="col-lg-6">
@@ -32,7 +50,12 @@ require_once __DIR__. "/templates/header.php";
 
         </div>
     </div>
+    <?php } else { ?>
+    <h1 style="color: #E55604; background: #26577C;" class="text-center">Article introuvable</h1>
+    <?php } ?>
+
 </div>
+
 
 
 

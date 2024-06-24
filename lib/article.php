@@ -23,3 +23,14 @@ function getArticles(PDO $pdo, int $limit = null):array
 
     return $articles;
 }
+
+function getArticleById(PDO $pdo, int $id):array|bool
+{
+    $sql = "SELECT * FROM articles WHERE id = :id";
+    $query = $pdo->prepare($sql);
+    $query->bindValue(":id", $id, PDO::PARAM_INT);
+    $query->execute();
+    $article = $query->fetch(PDO::FETCH_ASSOC);
+
+    return $article;
+}

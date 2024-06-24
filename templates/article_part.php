@@ -15,7 +15,7 @@
             <p class="card-text">Some quick example text to build on the card title and make up the bulk
                 of
                 the card's content.</p>
-            <a href="actualite.php?id=<?=$key?>" class="btn btn-primary">Lire la suite</a>
+            <a href="actualite.php?id=<?=$article['id']?>" class="btn btn-primary">Lire la suite</a>
         </div>
     </div>
 </div>
