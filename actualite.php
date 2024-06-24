@@ -1,12 +1,19 @@
 <?php 
+
+require_once __DIR__. "/lib/config.php";
+require_once __DIR__. "/lib/pdo.php";
+
+/* SANS BDD
 require_once __DIR__. "/lib/article.php";
 $id = $_GET['id'];
 $article = $articles[$id];
 
 require_once __DIR__. "/lib/menu.php";
 $mainMenu["actualite.php"] = ["head_title" => htmlentities($article["title"]), "meta_description" =>htmlentities(substr($article["content"], 0, 250)), "exclude" => true];
+*/
 
 require_once __DIR__. "/templates/header.php";
+
 
 
 
