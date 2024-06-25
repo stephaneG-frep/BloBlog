@@ -14,11 +14,8 @@ if (isset($_GET['id'])) {
     $article = getArticleById($pdo, $id);
 
     if ($article){
-        if ($article["image"] === null) {
-            $imagePath = _ASSETS_IMAGES_FOLDER_."default-article.jpg";
-         } else {
-           $imagePath = _ARTICLES_IMAGES_FOLDER_.htmlentities($article['image']);
-         }
+       
+         $imagePath = getArticleImage($article["image"]);
 
         $mainMenu["actualite.php"] = ["head_title" => htmlentities($article["title"]), "meta_description" =>htmlentities(substr($article["content"], 0, 250)), "exclude" => true];
     } else {
@@ -41,8 +38,8 @@ require_once __DIR__. "/templates/header.php";
     <h1>Votre article...</h1>
     <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
         <div class="col-10 col-sm-8 col-lg-6">
-            <img src="<?=$imagePath?>" class="d-block mx-lg-auto img-fluid"
-                alt="<?=htmlentities($article["title"])?>" width="700" height="500" loading="lazy">
+            <img src="<?=$imagePath?>" class="d-block mx-lg-auto img-fluid" alt="<?=htmlentities($article["title"])?>"
+                width="700" height="500" loading="lazy">
         </div>
         <div class="col-lg-6">
             <h1 class="display-5 fw-bold lh-1 mb-3"><?=htmlentities($article["title"])?></h1>
