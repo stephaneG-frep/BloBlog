@@ -1,7 +1,10 @@
 <?php
+   require_once __DIR__. "/../lib/config.php";
+   require_once __DIR__. "/../lib/session.php";
    require_once __DIR__. "/../lib/article.php";
    require_once __DIR__. "/../lib/menu.php";
     $currentPage = basename($_SERVER["SCRIPT_NAME"]);
+
 
 ?>
 
@@ -45,8 +48,15 @@
             </ul>
 
             <div class="col-md-3 text-end">
+                            
+                <?php if (isset($_SESSION['user'])) {?> 
+                <a href="logout.php" class="btn btn-outline-primary me-2">Déconnexion</a>   
+                <?php } else { ?>
                 <a href="login.php" class="btn btn-outline-primary me-2">Connexion</a>
-                <button type="button" class="btn btn-primary">Sign-up</button>
+                <a href="#" class="btn btn-primary">Inscription</a> 
+                <?php }?>
+                
+                
             </div>
         </header>
     </div>
