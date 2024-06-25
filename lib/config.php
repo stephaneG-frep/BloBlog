@@ -1,5 +1,6 @@
 <?php
 
+define("_DOMAIN_", "localhost");
 define("_DB_SERVER_", "localhost");
 define("_DB_NAME_", "bloblog");
 define("_DB_USER_", "root");
