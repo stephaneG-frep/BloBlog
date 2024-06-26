@@ -32,6 +32,7 @@
                 <a href="index.php" class="d-inline-flex link-body-emphasis text-decoration-none">
                     <img src="assets/images/bloblog.jpg" alt="logo du site" width="140px" height="80px" class="rounded">
                 </a>
+               
             </div>
 
             <ul class="nav nav-pills col-12 col-md-auto mb-2 justify-content-center mb-md-0">
@@ -48,15 +49,15 @@
             </ul>
 
             <div class="col-md-3 text-end">
-                            
-                <?php if (isset($_SESSION['user'])) {?> 
-                <a href="logout.php" class="btn btn-outline-primary me-2">Déconnexion</a>   
+
+                <?php if (isset($_SESSION['user'])) { ?>
+                <a href="logout.php" class="btn btn-outline-primary me-2">Déconnexion</a>
                 <?php } else { ?>
                 <a href="login.php" class="btn btn-outline-primary me-2">Connexion</a>
-                <a href="#" class="btn btn-primary">Inscription</a> 
+                <a href="#" class="btn btn-primary">Inscription</a>
                 <?php }?>
-                
-                
+
+
             </div>
         </header>
     </div>

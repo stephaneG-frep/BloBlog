@@ -6,18 +6,27 @@ $articles = [
     ["title" => "Les meilleurs outils Devops", "content" => "Devopps Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, sint quam ducimus numquam ea nihil aliquid est ipsam aperiam perferendis incidunt quisquam atque dolores voluptas commodi praesentium omnis placeat exercitationem.", "image" => "3-devops.png"],
 ];
 */
-function getArticles(PDO $pdo, int $limit = null):array
+function getArticles(PDO $pdo, int $limit = null, int $page = null):array
 {
     $sql = "SELECT * FROM articles ORDER BY id DESC";
-    if ($limit) {
+    if ($limit && !$page) {
        $sql .= " LIMIT :limit";
+    }
+    if ($page) {
+        $sql .= " LIMIT :offset, :limit";
     }
 
     $query = $pdo->prepare($sql);
 
     if ($limit) {
-    $query->bindValue(":limit", $limit, PDO::PARAM_INT);
+        $query->bindValue(":limit", $limit, PDO::PARAM_INT);
     }
+    
+    if ($page) {
+        $offset = ($page -1) * $limit;
+        $query->bindValue(":offset", $offset, PDO::PARAM_INT);
+        }
+
     $query->execute();
     $articles = $query->fetchAll(PDO::FETCH_ASSOC);
 
