@@ -4,7 +4,7 @@
 
 <div class="col-md-4 my-2">
 
-    <div class="card">
+    <div class="card text-bg-info">
         <img src="<?=$imagePath?>" class="card-img-top" alt="<?=htmlentities($article['title'])?>">
         <div class="card-body">
             <h5 class="card-title"><?=htmlentities($article['title'])?></h5>
