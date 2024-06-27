@@ -1,4 +1,6 @@
 <?php
+
+
    require_once __DIR__. "/../lib/config.php";
    require_once __DIR__. "/../lib/session.php";
    require_once __DIR__. "/../lib/article.php";
@@ -36,7 +38,7 @@
             </div>
 
             <ul class="nav nav-pills col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                <?php foreach($mainMenu as $key=>$menuItem)  {
+            <?php foreach($mainMenu as $key=>$menuItem)  {
                     if (!array_key_exists("exclude", $menuItem)) {
                     ?>
                 <li class="nav-item"><a href="<?=$key?>" class="nav-link px-2 <?php
@@ -45,6 +47,7 @@
                      ?>"><?=$menuItem['menu-title'] ?></a></li>
                 <?php }
                 }?>
+                
 
             </ul>
 
@@ -54,9 +57,9 @@
                 <a href="logout.php" class="btn btn-outline-primary me-2">Déconnexion</a>
                 <?php } else { ?>
                 <a href="login.php" class="btn btn-outline-primary me-2">Connexion</a>
-                <a href="#" class="btn btn-primary">Inscription</a>
+                <a href="inscription.php" class="btn btn-primary">Inscription</a>
                 <?php }?>
-
+               
 
             </div>
         </header>
