@@ -1,34 +1,23 @@
 <?php
-require_once __DIR__. "/../lib/config.php";
-require_once __DIR__. "/../lib/session.php";
+require_once __DIR__. "/lib/config.php";
+require_once __DIR__. "/lib/session.php";
 adminOnly();
 
-require_once __DIR__. "/../lib/pdo.php";
-require_once __DIR__. "/../lib/tools.php";
-require_once __DIR__. "/../lib/article.php";
-require_once __DIR__. "/../lib/category.php";
+require_once __DIR__. "/lib/pdo.php";
+require_once __DIR__. "/lib/tools.php";
+require_once __DIR__. "/lib/article.php";
+require_once __DIR__. "/lib/category.php";
 require_once __DIR__. "/templates/header.php";
-
 $errors = [];
 $messages = [];
+
 $article = [
-   'title' => '',
-   'content' => '',
-   'category_id' => ''
-];
+    'title' => '',
+    'content' => '',
+    'category_id' => ''
+ ];
 
 $categories = getCategories($pdo);
-
-if (isset($_GET['id'])) {
-    //récuperation de l'article pour modif..
-    $article = getArticleById($pdo, $_GET['id']);
-    if ($article === false) {
-        $errors[] = "L'article n'existe pas/ou plus";
-    }
-    $pageTitle = "Formulaire modification article";
-} else {
-    $pageTitle = "Formulaire ajout article";
-}
 
 if (isset($_POST['saveArticle'])) {
 
@@ -99,20 +88,20 @@ if (isset($_POST['saveArticle'])) {
      }
 }
 ?>
+<div class="container">
+    <h1>Poster vos articles</h1>
 
-<h1><?= $pageTitle; ?></h1>
-
-<?php foreach ($messages as $message) { ?>
+    <?php foreach ($messages as $message) { ?>
     <div class="alert alert-success" role="alert">
         <?= $message; ?>
     </div>
-<?php } ?>
-<?php foreach ($errors as $error) { ?>
+    <?php } ?>
+    <?php foreach ($errors as $error) { ?>
     <div class="alert alert-danger" role="alert">
         <?= $error; ?>
     </div>
-<?php } ?>
-<?php if ($article !== false) { ?>
+    <?php } ?>
+    <?php if ($article !== false) { ?>
     <form method="POST" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="title" class="form-label">Titre</label>
@@ -126,19 +115,21 @@ if (isset($_POST['saveArticle'])) {
             <label for="category" class="form-label">Catégorie</label>
             <select name="category_id" id="category" class="form-select">
                 <?php foreach ($categories as $category) { ?>
-                    <option value="1" <?php if (isset($article['category_id']) && $article['category_id'] == $category['id']) { ?>selected="selected" <?php }; ?>><?= $category['name'] ?></option>
+                <option value="1"
+                    <?php if (isset($article['category_id']) && $article['category_id'] == $category['id']) { ?>selected="selected"
+                    <?php }; ?>><?= $category['name'] ?></option>
                 <?php } ?>
             </select>
         </div>
 
         <?php if (isset($_GET['id']) && isset($article['image'])) { ?>
-            <p>
-                <img src="<?= _ARTICLES_IMAGES_FOLDER_ . $article['image'] ?>" alt="<?= $article['title'] ?>" width="100">
-                <label for="delete_image">Supprimer l'image</label>
-                <input type="checkbox" name="delete_image" id="delete_image">
-                <input type="hidden" name="image" value="<?= $article['image']; ?>">
+        <p>
+            <img src="<?= _ARTICLES_IMAGES_FOLDER_ . $article['image'] ?>" alt="<?= $article['title'] ?>" width="100">
+            <label for="delete_image">Supprimer l'image</label>
+            <input type="checkbox" name="delete_image" id="delete_image">
+            <input type="hidden" name="image" value="<?= $article['image']; ?>">
 
-            </p>
+        </p>
         <?php } ?>
         <p>
             <input type="file" name="file" id="file">
@@ -147,7 +138,7 @@ if (isset($_POST['saveArticle'])) {
         <input type="submit" name="saveArticle" class="btn btn-primary" value="Enregistrer">
 
     </form>
-
+</div>
 <?php } ?>
 
 

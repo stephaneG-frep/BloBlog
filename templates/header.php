@@ -55,6 +55,7 @@
 
                 <?php if (isset($_SESSION['user'])) { ?>
                 <a href="logout.php" class="btn btn-outline-primary me-2">Déconnexion</a>
+                <a href="addArticle.php" class="btn btn-outline-primary me-2">Post</a>
                 <?php } else { ?>
                 <a href="login.php" class="btn btn-outline-primary me-2">Connexion</a>
                 <a href="inscription.php" class="btn btn-primary">Inscription</a>

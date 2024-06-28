@@ -6,6 +6,7 @@ $mainMenu = [
     'login.php' => ["menu-title" => "connexion", "head_title" => "Connexion a bloblog", "meta_description" =>" Connexion au site ", "exclude" => true],
     'inscription.php' => ["menu-title" => "inscription", "head_title" => "Inscription a bloblog", "meta_description" =>" Inscription au site ", "exclude" => true],
     'contact.php' => ["menu-title" => "contact", "head_title" => "contact de bloblog", "meta_description" =>" les contacts du site "],
+    'addArticle.php' => ["menu-title" =>"Vos_Post", "head_title" => "Post des bmembres", "meta_description" => "Les articles posté par les membres", "exclude" => true],
 ];
 
 
