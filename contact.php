@@ -45,7 +45,7 @@ if (isset($_POST['sendContact'])) {
     <?php } ?>
 
     <?php foreach($errors as $error) { ?>
-    <div class="alert alert-success">
+    <div class="alert alert-danger">
         <?=$error; ?>
     </div>
     <?php } ?>

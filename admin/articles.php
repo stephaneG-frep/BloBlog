@@ -38,8 +38,8 @@ $totalPages = ceil($totalArticles / _ADMIN_ITEM_PER_PAGE_);
         <tr>
             <th scope="row"><?=$article['id']?></th>
             <td><?=$article['title']?></td>
-            <><a href="article.php?id=<?=$article['id']?>">Modifier</a>
-            | <a href="article_delete.php?id=<?= $article['id'] ?>" 
+            <td><a href="article.php?id=<?= $article['id'] ?>">Modifier</a>
+             <a href="article_delete.php?id=<?= $article['id'] ?>" 
               onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet article ?')">Supprimer</a>
         </td>
         </tr>
